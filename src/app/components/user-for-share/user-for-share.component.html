@@ -1,0 +1,12 @@
+<div style="display: flex">
+
+  <h3 style="width: 70%"> {{ user.username }} </h3>
+
+
+  <button [disabled]="isLoading" *ngIf="isShared" (click)="removeShareUser()" class="btn btn-danger" style="margin-left: 30px; width: 30%">Remove shared
+  </button>
+
+  <button [disabled]="isLoading" *ngIf="!isShared" (click)="addShareUser()" class="btn btn-warning" style="margin-left: 30px; width: 30%">Share my units
+  </button>
+
+</div>

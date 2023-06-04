@@ -1,0 +1,111 @@
+<div class="accordion mt-3" id="accordionExample">
+
+  <div class="accordion-item">
+
+    <h2 class="accordion-header">
+
+      <button (click)="showUnitInformation()" class="accordion-button" [ngClass]="{'collapsed' : isShowUnitInformation}"
+              type="button">
+        {{ unit.name }}
+      <ng-content></ng-content>
+      </button>
+
+    </h2>
+
+    <div *ngIf="isShowUnitInformation" class="margin__for__content">
+
+      <div class="mt-3 mb-3">
+
+        <h3>About Unit
+          <button (click)="modalEditUnitService.open(unit)" type="button" class="btn btn-outline-info mb-2"
+                  style="margin-right: 1%;margin-left: 1%">Change Unit
+          </button>
+          <button (click)="unitService.deleteUnit(unit, unitsReference).subscribe()" type="button" class="btn btn-outline-danger mb-2">
+            Delete Unit
+          </button>
+
+          <div class="form-check-inline">
+            <label class="form-check-label" style="font-size: 15px; margin-left: 30px; margin-right: 10px">Shorted text</label>
+            <input type="checkbox" [(ngModel)]="isFullAbout">
+          </div>
+
+        </h3>
+
+        <pre
+          style="font-weight: lighter;white-space: pre-line; text-align: justify; font-family: Arial, Helvetica, sans-serif; padding: 10px 20px 10px 0px">
+          {{ !isFullAbout ? unit.description : unit.description | shortedText: 200  }} </pre>
+
+        <h3> Personnel
+          <button (click)="modalCreateServiceManService.open(unit)" type="button" class="btn btn-outline-info mb-2"
+                  style="margin-left: 2%">Create new serviceman
+          </button>
+        </h3>
+      </div>
+
+      <table class="table">
+
+        <thead>
+        <tr>
+          <th scope="col">№</th>
+          <th scope="col">Full name</th>
+          <th scope="col">Rank</th>
+          <th scope="col">Position</th>
+          <th scope="col">Status</th>
+          <th scope="col">Is military</th>
+          <th scope="col">Details / Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr class="table" *ngFor="let serviceMan of unit.serviceMans; index as index">
+
+          <th scope="row">{{ index + 1 }}</th>
+          <td>{{ serviceMan.fullName | shortedText:35 }}</td>
+          <td>{{ serviceMan.rank | shortedText:35 }}</td>
+          <td>{{ serviceMan.position | shortedText:35 }}</td>
+          <td>{{ serviceMan.status | shortedText:35 }}</td>
+          <td>{{ serviceMan.isMilitary ? "Yes" : "No"}}</td>
+
+          <td>
+            <button class="btn btn-outline-success" (click)="modalDetailsServiceManService.open(serviceMan, unit)">
+              Details / Edit
+            </button>
+          </td>
+
+          <td>
+            <button class="btn btn-outline-danger"
+                    (click)="serviceManService.deleteServiceMan(serviceMan, unit).subscribe()">Delete
+            </button>
+          </td>
+
+        </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div *ngIf="modalEditUnitService.isVisible$ | async">
+
+  <app-modal-edit-unit></app-modal-edit-unit>
+
+</div>
+
+<div *ngIf="modalCreateServiceManService.isVisible$ | async">
+
+  <app-modal-create-service-man></app-modal-create-service-man>
+
+</div>
+
+<div *ngIf="modalDetailsServiceManService.isVisible$ | async">
+
+  <app-modal-details-service-man></app-modal-details-service-man>
+
+</div>

@@ -1,0 +1,32 @@
+<div class="main">
+
+  <div class="form-group has-search w-100 d-flex">
+    <span class="fa fa-search form-control-feedback">
+    </span>
+    <input type="text" class="form-control w-75" placeholder="Search for units"
+           [(ngModel)]="searchUnitText">
+    <button (click)="modalCreateUnitService.open()" type="button" class="btn btn-primary w-25" style="margin-left: 5%">Create Unit
+    </button>
+  </div>
+
+  <p *ngIf="loading">Loading...</p>
+
+  <app-unit *ngFor="let unit of unitsService.units | filterUnits: searchUnitText;" [unit]="unit" [unitsReference]="unitsService.units">
+
+  </app-unit>
+
+  <app-unit *ngFor="let sharedUnit of unitsService.sharedUnits | filterUnits: searchUnitText" [unit]="sharedUnit" [unitsReference]="unitsService.sharedUnits">
+    <div style="color: red; margin-left: 10px"> Shared by "{{ sharedUnit.user.username }}" </div>
+  </app-unit>
+
+  <div *ngIf="modalCreateUnitService.isVisible$ | async">
+
+    <app-modal-create-unit></app-modal-create-unit>
+
+  </div>
+
+  <div style="height: 300px">
+
+  </div>
+
+</div>

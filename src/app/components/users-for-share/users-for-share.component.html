@@ -1,0 +1,16 @@
+<p *ngIf="isLoading">Loading...</p>
+
+<ng-content></ng-content>
+
+<h4>Here you can share your units with someone... </h4>
+
+<input type="text" class="form-control w-100" placeholder="Search for users"
+       [(ngModel)]="usersSearchText">
+
+<div class="border border-primary"  style="margin-top: 20px; width: 100%; padding: 20px 20px 20px 20px" *ngFor="let user of userService.users | filterUsers: usersSearchText;">
+
+  <app-user-for-share [user]="user" [isShared]="isShared(user)">
+
+  </app-user-for-share>
+
+</div>

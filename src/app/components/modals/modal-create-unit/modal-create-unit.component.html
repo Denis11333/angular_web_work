@@ -1,0 +1,73 @@
+<div class="modal__window">
+  <div class="modal__content border border-warning border-2 border-opacity-50">
+
+    <form [formGroup]="form" (ngSubmit)="createUnit()" style="height: 100%">
+
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend"
+             style="margin-top: 3%; margin-left: 3%; margin-right: 3%; width: 150px">
+        <span class="input-group-text"
+              id="inputGroup-sizing-default">Unit name</span>
+        </div>
+
+        <input type="text" class="form-control"
+               style="margin-top: 3%;margin-right: 3%"
+               formControlName="name">
+
+      </div>
+
+      <div style="color: red; margin-left: 240px" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+
+        <p *ngIf="name.errors?.required">
+          unit name required
+        </p>
+
+        <p *ngIf="name.errors?.minlength">
+          min length : {{ name.errors?.minlength.requiredLength }}
+        </p>
+
+        <p *ngIf="name.errors?.maxlength">
+          max length : {{ name.errors?.maxlength.requiredLength }}
+        </p>
+
+      </div>
+
+      <div class="input-group mb-3" style="height: 70%">
+
+        <div class="input-group-prepend"
+             style="margin-left: 3%; margin-right: 3%; width: 150px">
+        <span class="input-group-text"
+        >Unit description</span>
+        </div>
+
+        <textarea style="resize: none;margin-right: 3%;" class="form-control"
+        formControlName="description"></textarea>
+
+      </div>
+
+      <div style="color: red; margin-left: 240px">
+
+        <p *ngIf="description.errors?.maxlength">
+          max length : {{ description.errors?.maxlength.requiredLength }}
+        </p>
+
+      </div>
+
+      <div style="margin-top: 1%; margin-left: 16%">
+
+        <button style="height: 10%; width: 20%;" type="submit"
+                class="btn btn-outline-success">Create
+        </button>
+        <button (click)="modalCreateUnitService.close()" style="height: 10%; width: 20%; margin-left: 57%" type="button"
+                class="btn btn-outline-danger">Cancel
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
