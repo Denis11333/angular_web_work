@@ -1,8 +1,7 @@
-import {Component, Input, ViewContainerRef} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {IUnit} from "../../models/unit";
 import {IServiceMan} from "../../models/service-man";
 import {UnitsService} from "../../services/units.service";
-import {ModalDetailsServiceManService} from "../../services/modals/modal-details-service-man.service";
 import {ModalEditUnitService} from "../../services/modals/modal-edit-unit.service";
 import {ModalCreateServiceManService} from "../../services/modals/modal-create-service-man.service";
 import {ServiceManService} from "../../services/service-man.service";
@@ -22,7 +21,6 @@ export class UnitComponent {
 
   constructor(public unitService: UnitsService,
               public serviceManService: ServiceManService,
-              public modalDetailsServiceManService: ModalDetailsServiceManService,
               public modalEditUnitService: ModalEditUnitService,
               public modalCreateServiceManService: ModalCreateServiceManService) {
   }

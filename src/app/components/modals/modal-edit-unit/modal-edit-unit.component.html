@@ -9,7 +9,7 @@
         <div class="input-group-prepend"
              style="margin-top: 3%; margin-left: 3%; margin-right: 3%; width: 150px">
         <span class="input-group-text"
-              id="inputGroup-sizing-default">Unit name</span>
+              id="inputGroup-sizing-default">Назва підрозділу</span>
         </div>
 
         <input type="text" class="form-control"
@@ -21,15 +21,15 @@
       <div style="color: red; margin-left: 240px" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
 
         <p *ngIf="name.errors?.required">
-          unit name required
+          Назва має бути не пуста
         </p>
 
         <p *ngIf="name.errors?.minlength">
-          min length : {{ name.errors?.minlength.requiredLength }}
+          Мінімальна довжина : {{ name.errors?.minlength.requiredLength }}
         </p>
 
         <p *ngIf="name.errors?.maxlength">
-          max length : {{ name.errors?.maxlength.requiredLength }}
+          Максимальна довжина : {{ name.errors?.maxlength.requiredLength }}
         </p>
 
       </div>
@@ -38,8 +38,8 @@
 
         <div class="input-group-prepend"
              style="margin-left: 3%; margin-right: 3%; width: 150px">
-        <span class="input-group-text"
-        >Unit description</span>
+        <span class="input-group-text text-wrap"
+        >Інформація про підрозділ</span>
         </div>
 
         <textarea style="resize: none;margin-right: 3%;" class="form-control"

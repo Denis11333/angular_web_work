@@ -3,10 +3,10 @@
   <h3 style="width: 70%"> {{ user.username }} </h3>
 
 
-  <button [disabled]="isLoading" *ngIf="isShared" (click)="removeShareUser()" class="btn btn-danger" style="margin-left: 30px; width: 30%">Remove shared
+  <button [disabled]="isLoading" *ngIf="isShared" (click)="removeShareUser()" class="btn btn-danger" style="margin-left: 30px; width: 30%">Видалити доступ до підрозділів
   </button>
 
-  <button [disabled]="isLoading" *ngIf="!isShared" (click)="addShareUser()" class="btn btn-warning" style="margin-left: 30px; width: 30%">Share my units
+  <button [disabled]="isLoading" *ngIf="!isShared" (click)="addShareUser()" class="btn btn-warning" style="margin-left: 30px; width: 30%">Надати доступ до підрозділів
   </button>
 
 </div>

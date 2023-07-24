@@ -16,28 +16,29 @@
 
       <div class="mt-3 mb-3">
 
-        <h3>About Unit
+        <h3>Інформація про підрозділ
           <button (click)="modalEditUnitService.open(unit)" type="button" class="btn btn-outline-info mb-2"
-                  style="margin-right: 1%;margin-left: 1%">Change Unit
+                  style="margin-right: 1%;margin-left: 1%">Змінити підрозділ
           </button>
           <button (click)="unitService.deleteUnit(unit, unitsReference).subscribe()" type="button" class="btn btn-outline-danger mb-2">
-            Delete Unit
+            Видалити підрозділ
           </button>
 
           <div class="form-check-inline">
-            <label class="form-check-label" style="font-size: 15px; margin-left: 30px; margin-right: 10px">Shorted text</label>
+            <label class="form-check-label" style="font-size: 15px; margin-left: 30px; margin-right: 10px">Короткий текст</label>
             <input type="checkbox" [(ngModel)]="isFullAbout">
           </div>
 
         </h3>
 
         <pre
-          style="font-weight: lighter;white-space: pre-line; text-align: justify; font-family: Arial, Helvetica, sans-serif; padding: 10px 20px 10px 0px">
+          style="font-weight: lighter;white-space: pre-line; text-align: justify; font-family: Arial, Helvetica, sans-serif; padding: 10px 20px 10px 0">
+
           {{ !isFullAbout ? unit.description : unit.description | shortedText: 200  }} </pre>
 
-        <h3> Personnel
+          <h3> Особовий склад підрозділу
           <button (click)="modalCreateServiceManService.open(unit)" type="button" class="btn btn-outline-info mb-2"
-                  style="margin-left: 2%">Create new serviceman
+                  style="margin-left: 2%">Створити нового в/c або праціника ЗСУ
           </button>
         </h3>
       </div>
@@ -47,13 +48,11 @@
         <thead>
         <tr>
           <th scope="col">№</th>
-          <th scope="col">Full name</th>
-          <th scope="col">Rank</th>
-          <th scope="col">Position</th>
-          <th scope="col">Status</th>
-          <th scope="col">Is military</th>
-          <th scope="col">Details / Edit</th>
-          <th scope="col">Delete</th>
+          <th scope="col">Повне ім'я</th>
+          <th scope="col">Звання</th>
+          <th scope="col">Посада</th>
+          <th scope="col">Профіль військового</th>
+          <th scope="col">Видалення</th>
         </tr>
         </thead>
 
@@ -64,19 +63,17 @@
           <th scope="row">{{ index + 1 }}</th>
           <td>{{ serviceMan.fullName | shortedText:35 }}</td>
           <td>{{ serviceMan.rank | shortedText:35 }}</td>
-          <td>{{ serviceMan.position | shortedText:35 }}</td>
-          <td>{{ serviceMan.status | shortedText:35 }}</td>
-          <td>{{ serviceMan.isMilitary ? "Yes" : "No"}}</td>
+          <td>{{ serviceMan.position | shortedText:80 }}</td>
 
           <td>
-            <button class="btn btn-outline-success" (click)="modalDetailsServiceManService.open(serviceMan, unit)">
-              Details / Edit
+            <button class="btn btn-outline-success" [routerLink]="['/about-service-man', serviceMan.id]">
+              Відкрити профіль
             </button>
           </td>
 
           <td>
             <button class="btn btn-outline-danger"
-                    (click)="serviceManService.deleteServiceMan(serviceMan, unit).subscribe()">Delete
+                    (click)="serviceManService.deleteServiceMan(serviceMan, unit).subscribe()">Видалити
             </button>
           </td>
 
@@ -101,11 +98,5 @@
 <div *ngIf="modalCreateServiceManService.isVisible$ | async">
 
   <app-modal-create-service-man></app-modal-create-service-man>
-
-</div>
-
-<div *ngIf="modalDetailsServiceManService.isVisible$ | async">
-
-  <app-modal-details-service-man></app-modal-details-service-man>
 
 </div>

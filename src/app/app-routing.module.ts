@@ -6,6 +6,7 @@ import {InformationPageComponent} from "./pages/information-page/information-pag
 import {MyUnitsComponent} from "./pages/my-units/my-units.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {ShareUnitsComponent} from "./pages/share-units/share-units.component";
+import {AboutServiceManComponent} from "./pages/about-service-man/about-service-man.component";
 
 const routes: Routes = [
   {path: '', component: InformationPageComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationPageComponent},
   {path: 'my-units', component: MyUnitsComponent, canActivate: [AuthGuard]},
   {path: 'share-units', component: ShareUnitsComponent, canActivate: [AuthGuard]},
+  {path: 'about-service-man/:id', component: AboutServiceManComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: ''},
 ];
 

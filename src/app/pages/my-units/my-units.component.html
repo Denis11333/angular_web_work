@@ -3,20 +3,20 @@
   <div class="form-group has-search w-100 d-flex">
     <span class="fa fa-search form-control-feedback">
     </span>
-    <input type="text" class="form-control w-75" placeholder="Search for units"
+    <input type="text" class="form-control w-75" placeholder="Пошук за назвою підрозділа"
            [(ngModel)]="searchUnitText">
-    <button (click)="modalCreateUnitService.open()" type="button" class="btn btn-primary w-25" style="margin-left: 5%">Create Unit
+    <button (click)="modalCreateUnitService.open()" type="button" class="btn btn-primary w-25" style="margin-left: 5%">Створити підрозділ
     </button>
   </div>
 
-  <p *ngIf="loading">Loading...</p>
+  <p *ngIf="loading">Загрузка...</p>
 
   <app-unit *ngFor="let unit of unitsService.units | filterUnits: searchUnitText;" [unit]="unit" [unitsReference]="unitsService.units">
 
   </app-unit>
 
   <app-unit *ngFor="let sharedUnit of unitsService.sharedUnits | filterUnits: searchUnitText" [unit]="sharedUnit" [unitsReference]="unitsService.sharedUnits">
-    <div style="color: red; margin-left: 10px"> Shared by "{{ sharedUnit.user.username }}" </div>
+    <div style="color: red; margin-left: 10px"> Наданний доступ від користувача "{{ sharedUnit.user.username }}" </div>
   </app-unit>
 
   <div *ngIf="modalCreateUnitService.isVisible$ | async">

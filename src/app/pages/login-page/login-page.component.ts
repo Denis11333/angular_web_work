@@ -47,7 +47,7 @@ export class LoginPageComponent {
         return throwError(error)
       })
     ).subscribe(() => {
-      this.router.navigate(['']);
+      this.router.navigate(['/my-units']);
     });
   }
 

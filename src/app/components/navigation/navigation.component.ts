@@ -1,20 +1,22 @@
 import {
-  Component,
+    Component,
 } from '@angular/core';
+import {WebSocketService} from "../../services/web-socket.service";
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
 
-  constructor() {
-  }
+    constructor(private webSocketService: WebSocketService) {
+    }
 
-  logOutAction() {
-    localStorage.removeItem('auth-nestjs')
-  }
+    logOutAction() {
+        localStorage.removeItem('auth-nestjs')
+        this.webSocketService.closeConnection()
+    }
 
-  protected readonly localStorage = localStorage;
+    protected readonly localStorage = localStorage;
 }

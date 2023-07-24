@@ -33,14 +33,7 @@ export class ModalCreateServiceManComponent {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(100)
-      ]),
-    status: new FormControl('',
-      [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(100)
-      ]),
-    isMilitary: new FormControl(false)
+      ])
   });
 
   get fullName() {
@@ -53,10 +46,6 @@ export class ModalCreateServiceManComponent {
 
   get position() {
     return this.form.controls.position as FormControl;
-  }
-
-  get status() {
-    return this.form.controls.status as FormControl;
   }
 
   createNewServiceMan() {

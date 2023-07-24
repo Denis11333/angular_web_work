@@ -8,7 +8,7 @@
         <div class="input-group-prepend"
              style="margin-top: 3%; margin-left: 3%; margin-right: 3%; width: 150px">
         <span class="input-group-text"
-              id="inputGroup-sizing-default">Unit name</span>
+              id="inputGroup-sizing-default">Назва підрозділу</span>
         </div>
 
         <input type="text" class="form-control"
@@ -20,15 +20,15 @@
       <div style="color: red; margin-left: 240px" *ngIf="name?.invalid && (name?.dirty || name?.touched)">
 
         <p *ngIf="name.errors?.required">
-          unit name required
+          Ім'я має бути не пустим
         </p>
 
         <p *ngIf="name.errors?.minlength">
-          min length : {{ name.errors?.minlength.requiredLength }}
+          Мінімальна довжина : {{ name.errors?.minlength.requiredLength }}
         </p>
 
         <p *ngIf="name.errors?.maxlength">
-          max length : {{ name.errors?.maxlength.requiredLength }}
+          Максимальна довжина : {{ name.errors?.maxlength.requiredLength }}
         </p>
 
       </div>
@@ -37,8 +37,8 @@
 
         <div class="input-group-prepend"
              style="margin-left: 3%; margin-right: 3%; width: 150px">
-        <span class="input-group-text"
-        >Unit description</span>
+        <span class="input-group-text text-wrap"
+        >Інформація про підрозділ</span>
         </div>
 
         <textarea style="resize: none;margin-right: 3%;" class="form-control"
@@ -49,7 +49,7 @@
       <div style="color: red; margin-left: 240px">
 
         <p *ngIf="description.errors?.maxlength">
-          max length : {{ description.errors?.maxlength.requiredLength }}
+          Максимальна довжина : {{ description.errors?.maxlength.requiredLength }}
         </p>
 
       </div>
@@ -57,10 +57,10 @@
       <div style="margin-top: 1%; margin-left: 16%">
 
         <button style="height: 10%; width: 20%;" type="submit"
-                class="btn btn-outline-success">Create
+                class="btn btn-outline-success">Зберігти
         </button>
         <button (click)="modalCreateUnitService.close()" style="height: 10%; width: 20%; margin-left: 57%" type="button"
-                class="btn btn-outline-danger">Cancel
+                class="btn btn-outline-danger">Повернутись назад
         </button>
 
       </div>

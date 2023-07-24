@@ -7,36 +7,46 @@ import {IUnit} from "../models/unit";
 import {tap} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ServiceManService {
 
-  constructor(private http: HttpClient) {
-  }
+    currentServiceMan: IServiceMan
 
-  createServiceMan(dto : CreateServiceManDto) {
-    return this.http.post<IServiceMan>(`${environment.apiUrl}/service-man`, dto);
-  }
+    constructor(private http: HttpClient) {
+    }
 
-  editServiceMan(serviceMan: IServiceMan, unit: IUnit) {
-    return this.http.put<IServiceMan>(`${environment.apiUrl}/service-man`, serviceMan).pipe(
-      tap(() => {
-        let index = unit.serviceMans.findIndex(x => x.id === serviceMan.id)
+    createServiceMan(dto: CreateServiceManDto) {
+        return this.http.post<IServiceMan>(`${environment.apiUrl}/service-man`, dto);
+    }
 
-        unit.serviceMans[index] = serviceMan
-      })
-    )
-  }
+    deletePhoto(serviceMan: IServiceMan) {
+        return this.http.post<IServiceMan>(`${environment.apiUrl}/service-man/delete/photo`, serviceMan);
+    }
 
-  deleteServiceMan(serviceMan : IServiceMan, unit : IUnit) {
-    return this.http.delete(`${environment.apiUrl}/service-man`, {
-      body: serviceMan
-    }).pipe(
-      tap(() => {
-        let index = unit.serviceMans.findIndex(data  => data.id === serviceMan.id)
+    editServiceMan(form: FormData) {
+        return this.http.put<IServiceMan>(`${environment.apiUrl}/service-man`, form)
+            .pipe(
+                tap(serviceMan => this.currentServiceMan = serviceMan)
+            )
+    }
 
-        unit.serviceMans.splice(index, 1)
-      })
-    );
-  }
+    deleteServiceMan(serviceMan: IServiceMan, unit: IUnit) {
+        return this.http.delete(`${environment.apiUrl}/service-man`, {
+            body: {...serviceMan, unit: {id: unit.id}}
+        }).pipe(
+            tap(() => {
+                let index = unit.serviceMans.findIndex(data => data.id === serviceMan.id)
+
+                unit.serviceMans.splice(index, 1)
+            })
+        );
+    }
+
+    getServiceManById(serviceManId: number) {
+        return this.http.get<IServiceMan>(`${environment.apiUrl}/service-man/${serviceManId}`)
+            .pipe(
+                tap((serviceMan) => this.currentServiceMan = serviceMan)
+            )
+    }
 }

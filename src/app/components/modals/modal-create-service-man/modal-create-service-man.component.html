@@ -1,161 +1,120 @@
 <div class="modal__window">
-  <div class="modal__content border border-warning border-2 border-opacity-50">
+    <div class="modal__content border border-warning border-2 border-opacity-50">
 
-    <form style="height: 100%" [formGroup]="form" (ngSubmit)="createNewServiceMan()">
+        <form style="height: 100%" [formGroup]="form" (ngSubmit)="createNewServiceMan()">
 
-      <div class="input-group mb-3">
+            <div class="input-group mb-3">
 
-        <div class="input-group-prepend"
-             style="margin-top: 1%; margin-left: 3%; margin-right: 3%; width: 150px">
+                <div class="input-group-prepend"
+                     style="margin-top: 1%; margin-left: 3%; margin-right: 3%; width: 150px">
         <span class="input-group-text"
-        >Full name</span>
-        </div>
+        >Повне ім'я</span>
+                </div>
 
-        <input type="text" class="form-control"
-               style="margin-top: 1%;margin-right: 3%"
-               formControlName="fullName">
-
-
-      </div>
-
-      <div style="color: red; margin-left: 210px" *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
-
-        <p *ngIf="fullName.errors?.required">
-          full name required
-        </p>
-
-        <p *ngIf="fullName.errors?.minlength">
-          min length : {{ fullName.errors?.minlength.requiredLength }}
-        </p>
-
-        <p *ngIf="fullName.errors?.maxlength">
-          max length : {{ fullName.errors?.maxlength.requiredLength }}
-        </p>
+                <input type="text" class="form-control"
+                       style="margin-top: 1%;margin-right: 3%"
+                       formControlName="fullName">
 
 
-      </div>
+            </div>
+
+            <div style="color: red; margin-left: 210px"
+                 *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">
+
+                <p *ngIf="fullName.errors?.required">
+                    Повне ім'я має бути не пустим
+                </p>
+
+                <p *ngIf="fullName.errors?.minlength">
+                    Мінімальна довжина : {{ fullName.errors?.minlength.requiredLength }}
+                </p>
+
+                <p *ngIf="fullName.errors?.maxlength">
+                    Максимальна довжина : {{ fullName.errors?.maxlength.requiredLength }}
+                </p>
 
 
+            </div>
 
-      <div class="input-group mb-3">
 
-        <div class="input-group-prepend"
-             style="margin-left: 3%; margin-right: 3%; width: 150px">
+            <div class="input-group mb-3">
+
+                <div class="input-group-prepend"
+                     style="margin-left: 3%; margin-right: 3%; width: 150px">
         <span class="input-group-text"
-        >Rank</span>
-        </div>
+        >Звання</span>
+                </div>
 
-        <input type="text" class="form-control"
-               style="margin-right: 3%"
-               formControlName="rank">
+                <input type="text" class="form-control"
+                       style="margin-right: 3%"
+                       formControlName="rank">
 
-      </div>
+            </div>
 
-      <div style="color: red; margin-left: 210px" *ngIf="rank?.invalid && (rank?.dirty || rank?.touched)">
+            <div style="color: red; margin-left: 210px" *ngIf="rank?.invalid && (rank?.dirty || rank?.touched)">
 
-        <p *ngIf="rank.errors?.required">
-          unit name required
-        </p>
+                <p *ngIf="rank.errors?.required">
+                    Звання повинно бути не пустим
+                </p>
 
-        <p *ngIf="rank.errors?.minlength">
-          min length : {{ rank.errors?.minlength.requiredLength }}
-        </p>
+                <p *ngIf="rank.errors?.minlength">
+                    Мінімальна довжина : {{ rank.errors?.minlength.requiredLength }}
+                </p>
 
-        <p *ngIf="rank.errors?.maxlength">
-          max length : {{ rank.errors?.maxlength.requiredLength }}
-        </p>
+                <p *ngIf="rank.errors?.maxlength">
+                    Максимальна довжина : {{ rank.errors?.maxlength.requiredLength }}
+                </p>
 
 
-      </div>
+            </div>
 
-      <div class="input-group mb-3">
+            <div class="input-group mb-3">
 
-        <div class="input-group-prepend"
-             style="margin-left: 3%; margin-right: 3%; width: 150px">
+                <div class="input-group-prepend"
+                     style="margin-left: 3%; margin-right: 3%; width: 150px">
         <span class="input-group-text"
-        >Position</span>
-        </div>
+        >Посада</span>
+                </div>
 
-        <input type="text" class="form-control"
-               style="margin-right: 3%"
-               formControlName="position">
+                <input type="text" class="form-control"
+                       style="margin-right: 3%"
+                       formControlName="position">
 
-      </div>
+            </div>
 
-      <div style="color: red; margin-left: 210px" *ngIf="position?.invalid && (position?.dirty || position?.touched)">
+            <div style="color: red; margin-left: 210px"
+                 *ngIf="position?.invalid && (position?.dirty || position?.touched)">
 
-        <p *ngIf="position.errors?.required">
-          unit name required
-        </p>
+                <p *ngIf="position.errors?.required">
+                    Посада має бути не пуста
+                </p>
 
-        <p *ngIf="position.errors?.minlength">
-          min length : {{ position.errors?.minlength.requiredLength }}
-        </p>
+                <p *ngIf="position.errors?.minlength">
+                    Мінімальна довжина : {{ position.errors?.minlength.requiredLength }}
+                </p>
 
-        <p *ngIf="position.errors?.maxlength">
-          max length : {{ position.errors?.maxlength.requiredLength }}
-        </p>
-
-
-      </div>
-
-      <div class="input-group mb-3">
-
-        <div class="input-group-prepend"
-             style="margin-left: 3%; margin-right: 3%; width: 150px">
-        <span class="input-group-text"
-        >Status</span>
-        </div>
-
-        <input type="text" class="form-control"
-               style="margin-right: 3%"
-               formControlName="status">
-
-      </div>
-
-      <div style="color: red;margin-left: 210px" *ngIf="status?.invalid && (status?.dirty || status?.touched)">
-
-        <p *ngIf="status.errors?.required">
-          unit name required
-        </p>
-
-        <p *ngIf="status.errors?.minlength">
-          min length : {{ status.errors?.minlength.requiredLength }}
-        </p>
-
-        <p *ngIf="status.errors?.maxlength">
-          max length : {{ status.errors?.maxlength.requiredLength }}
-        </p>
-
-      </div>
-
-      <div class="input-group mb-3">
-
-        <div class="input-group-prepend"
-             style="margin-left: 3%; margin-right: 3%; width: 150px">
-        <span class="input-group-text"
-        >Is military</span>
-        </div>
-
-        <input style="margin-top: 10px" class="form-check-input" type="checkbox"
-        formControlName="isMilitary">
-
-      </div>
+                <p *ngIf="position.errors?.maxlength">
+                    Максимальна довжина : {{ position.errors?.maxlength.requiredLength }}
+                </p>
 
 
-      <div style="margin-top: 1%; margin-left: 21%">
+            </div>
 
-        <button [disabled]="form.invalid"
-          style="height: 10%; width: 20%;" type="submit" class="btn btn-outline-success">Create
-        </button>
-        <button (click)="modalCreateServiceManService.close()" style="height: 10%; width: 20%; margin-left: 57%" type="button"
-                class="btn btn-outline-danger">Cancel
-        </button>
 
-      </div>
+            <div style="margin-top: 1%; margin-left: 21%">
 
-    </form>
+                <button [disabled]="form.invalid"
+                        style="height: 10%; width: 20%;" type="submit" class="btn btn-outline-success">Зберігти
+                </button>
+                <button (click)="modalCreateServiceManService.close()"
+                        style="height: 10%; width: 20%; margin-left: 57%" type="button"
+                        class="btn btn-outline-danger">Повернутись назад
+                </button>
 
-  </div>
+            </div>
+
+        </form>
+
+    </div>
 </div>
 

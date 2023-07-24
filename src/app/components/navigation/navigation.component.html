@@ -1,24 +1,24 @@
 <ul class="nav justify-content-center" style="background-color: #e3f2fd;">
   <li class="nav-item">
-    <a class="nav-link active" routerLink="/">Information</a>
+    <a class="nav-link active" routerLink="/">Інформація про сайт</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="/my-units">My units</a>
+    <a class="nav-link" routerLink="/my-units">Мої підрозділи</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLink="/share-units">Share units</a>
+    <a class="nav-link" routerLink="/share-units">Керування доступу до підрозділів</a>
   </li>
   <li class="nav-item" *ngIf="localStorage.getItem('auth-nestjs') === null">
-    <a class="nav-link link-primary" routerLink="/login">Log in</a>
+    <a class="nav-link link-primary" routerLink="/login">Авторизуватися</a>
   </li>
 
   <li class="nav-item" *ngIf="localStorage.getItem('auth-nestjs') === null">
-    <a class="nav-link link-primary" routerLink="/registration">register</a>
+    <a class="nav-link link-primary" routerLink="/registration">Зареєструватися</a>
   </li>
 
 
   <li class="nav-item" *ngIf="localStorage.getItem('auth-nestjs') !== null">
-    <a (click)="logOutAction()" routerLink="/" class="nav-link link-primary">Log out</a>
+    <a (click)="logOutAction()" routerLink="/" class="nav-link link-primary">Вийти з акаунту</a>
   </li>
 
 </ul>
