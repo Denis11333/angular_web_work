@@ -1,0 +1,34 @@
+.container{
+    margin: 20px;
+    display:flex;
+}
+
+.photo{
+    width: 500px;
+    height: 400px;
+}
+
+.information__to__photo{
+    padding-left: 20px;
+    width: 615px;
+}
+
+.save__image{
+    margin-top: 20px;
+}
+
+.label__input{
+    margin-top: 10px;
+}
+
+.information{
+    margin: 30px;
+}
+
+.information h2{
+    padding-top: 25px;
+}
+
+
+
+

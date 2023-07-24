@@ -1,0 +1,159 @@
+<p *ngIf="isLoading">Loading...</p>
+
+<div *ngIf="!isLoading">
+
+    <form [formGroup]="form" (ngSubmit)="saveServiceMan()">
+
+        <div class="container">
+
+            <img alt="" [src]="environment.apiUrl + '/' + serviceManService.currentServiceMan.image"
+                 class="photo">
+
+            <div class="information__to__photo">
+                <h1>Загальні дані</h1>
+
+                <div class="form-group">
+                    <label class="label__input">Повне ім'я</label>
+                    <input type="text" class="form-control" formControlName="fullName">
+                </div>
+
+                <div class="form-group">
+                    <label class="label__input">Звання</label>
+                    <input type="text" class="form-control" formControlName="rank">
+                </div>
+
+                <div class="form-group">
+                    <label class="label__input">Посада</label>
+                    <input type="text" class="form-control" formControlName="position">
+                </div>
+
+                <div style="display: flex">
+                    <div class="save__image">
+                        <div style="display: flex">
+                            <label for="files" class="btn btn-primary" style="margin-right: 10px;width: 200px">Змінити
+                                зображення</label>
+                            <p style="width: 350px" *ngIf="selectedFile.name">Зображення з назвою
+                                : {{ selectedFile.name | shortedText: 20 }}</p>
+                        </div>
+                        <input id="files" style="visibility: hidden" type="file"
+                               (change)="onFileSelected($event)"/>
+                    </div>
+
+                    <div class="save__image" (click)="deletePhoto()">
+                        <div style="display: flex">
+                            <label class="btn btn-danger" style="margin-right: 10px;width: 200px">Видалити
+                                зображення</label>
+                        </div>
+                    </div>
+                </div>
+
+            <div>
+
+                <button type="submit" style="width: 200px;" class="btn btn-outline-success">Зберігти все
+                </button>
+
+            </div>
+        </div>
+
+</div>
+
+</form>
+
+</div>
+
+<div>
+    <form class="information" [formGroup]="form">
+
+        <div>
+            <h2>Особисті дані</h2>
+            <hr>
+
+            <div class="form-group">
+                <label class="label__input">Дата народження</label>
+                <input type="date" class="form-control" formControlName="dateOfBirth">
+            </div>
+            <div class="form-group">
+                <label class="label__input">Громадянство</label>
+                <input type="text" class="form-control" formControlName="nationality">
+            </div>
+            <div class="form-group">
+                <label class="label__input">Релегійні переконання</label>
+                <input type="text" class="form-control" formControlName="religiousBeliefs">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Місце народження</label>
+                <input type="text" class="form-control" formControlName="placeOfBirth">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Стать</label>
+                <input type="text" class="form-control" formControlName="sex">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Сімейний стан</label>
+                <input type="text" class="form-control" formControlName="maritalStatus">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Номер телефона</label>
+                <input type="text" class="form-control" formControlName="phoneNumber">
+            </div>
+        </div>
+
+        <div>
+
+            <h2>Кадрові дані</h2>
+            <hr>
+
+            <div class="form-group">
+                <label class="label__input">Дата вступу на військову службу</label>
+                <input type="date" class="form-control" formControlName="dataOfEntryIntoMilitaryService">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Спеціальність</label>
+                <input type="text" class="form-control" formControlName="specialty">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Кваліфікація</label>
+                <input type="text" class="form-control" formControlName="qualification">
+            </div>
+
+        </div>
+
+        <div>
+
+            <h2>Документи</h2>
+            <hr>
+
+            <div class="form-group">
+                <label class="label__input">Номер військового квитка</label>
+                <input type="text" class="form-control" formControlName="militaryTicketNumber">
+            </div>
+
+            <div class="form-group">
+                <label class="label__input">Номер паспорта</label>
+                <input type="text" class="form-control" formControlName="passportNumber">
+            </div>
+
+        </div>
+
+        <div>
+
+            <h2>Фінансова інформація</h2>
+            <hr>
+
+            <div class="form-group">
+                <label class="label__input">Фінансове забезпечення</label>
+                <input type="text" class="form-control" formControlName="financialSupport">
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+<div style="height: 300px"></div>
